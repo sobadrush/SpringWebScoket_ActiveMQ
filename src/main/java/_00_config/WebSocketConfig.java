@@ -10,15 +10,19 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 @EnableWebSocketMessageBroker
 public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer  {
 	
+	public WebSocketConfig() {
+		System.out.println("================= 【WebSocketConfig 起動】 ====================");
+	}
+
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry config) {
 		config.enableSimpleBroker("/topic");
-		config.setApplicationDestinationPrefixes("/app");
+		config.setApplicationDestinationPrefixes("/appFuck");
 	}
 
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
-		registry.addEndpoint("/gs-guide-websocket").withSockJS();
+		registry.addEndpoint("/myStompEndPoint").withSockJS();
 	}
 	
 }

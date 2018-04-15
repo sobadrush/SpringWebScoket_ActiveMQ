@@ -6,3 +6,6 @@ http://zhaozhiming.github.io/blog/2015/05/11/spring-websocket-config/
 
 【STOMP 客户端 API 整理】
 https://blog.csdn.net/jqsad/article/details/77745379
+
+【Spring MVC 零XML】
+https://www.programcreek.com/java-api-examples/?api=org.springframework.web.context.support.AnnotationConfigWebApplicationContext
