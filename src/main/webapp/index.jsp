@@ -62,7 +62,8 @@
 	                  showGreeting( incomingMsg.body );  
 	              });  
 	          });  
-	      }  
+	      }
+	      
 	        
 	      function disconnect() {  
 	          if (stompClient != null) {  
