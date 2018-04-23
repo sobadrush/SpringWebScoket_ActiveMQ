@@ -9,6 +9,7 @@ https://blog.csdn.net/jqsad/article/details/77745379
 
 【Spring MVC 零XML】
 https://www.programcreek.com/java-api-examples/?api=org.sprigframework.web.context.support.AnnotationConfigWebApplicationContext
+https://blog.csdn.net/u013571243/article/details/44565289
 
 【Spring4.3.3 WebSocket-STOMP协议集成 (2)-WebSocket-stomp子协议通讯小栗子】
 https://blog.csdn.net/fly_leopard/article/details/53148935
