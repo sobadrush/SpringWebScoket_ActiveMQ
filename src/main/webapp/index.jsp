@@ -21,8 +21,9 @@
  	  <b>WebSocket connected ?</b> &nbsp;&nbsp;
  	  <button type="button" id="disconnect" class="btn btn-secondary">Disconnected</button>&nbsp;&nbsp;
       <button type="button" id="connect" class="btn btn-success">Connected</button>
-  		
-  	  <b>您的名子是?</b><input id="userName" type="text"/>&nbsp;&nbsp;
+	  
+	  <br><br>
+  	  <b>您的名子是?</b>&nbsp;&nbsp;<input id="userName" type="text" value="武天老師" style="text-align: center"/>&nbsp;&nbsp;
   	  <button type="button" id="send" class="btn btn-primary">Send</button> <p/><p/><p/><hr/>
   
   	  <div id="conversation" class="container">
@@ -31,7 +32,7 @@
 	  	  	
 	  	  </table>
   	  </div>
-  
+ 
       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
@@ -56,10 +57,26 @@
 	          stompClient.connect({}, function (frame) {  
 	              setConnected(true);  
 	              console.log('Connected: ' + frame);  
-	              stompClient.subscribe('/topic/greetings', function ( incomingMsg ) {  
-	            	  console.log( 'incomingMsg >>> ' , incomingMsg );
+
+				  //【訂閱queue】
+	              stompClient.subscribe('/QUEUE_fuck/greetings', function ( incomingMsg ) {  
+	            	  console.log( '[QUEUE_fuck] incomingMsg >>> ' , incomingMsg );
 	                  // showGreeting( JSON.parse( incomingMsg.body ) );  
-	                  showGreeting( incomingMsg.body );  
+	                  showGreeting( "<b style='color:purple'> 訂閱 QUEUE_fuck >>> </b>" + incomingMsg.body );  
+	              });  
+				  
+				  //【訂閱topic】
+	              stompClient.subscribe('/topic/greetingsGG', function ( incomingMsg ) {  
+	            	  console.log( '[topic] incomingMsg >>> ' , incomingMsg );
+	                  // showGreeting( JSON.parse( incomingMsg.body ) );  
+	                  showGreeting( "<b style='color:orange'> 訂閱 topic >>> </b>" + incomingMsg.body );  
+	              });  
+
+				  //【訂閱queue】
+	              stompClient.subscribe('/topicQQQ/greetingsQQ', function ( incomingMsg ) {  
+	            	  console.log( '[topicQQQ] incomingMsg >>> ' , incomingMsg );
+	                  // showGreeting( JSON.parse( incomingMsg.body ) );  
+	                  showGreeting( "<b style='color:pink'> 訂閱 topicQQQ >>> </b>" + incomingMsg.body );  
 	              });  
 	          });  
 	      }

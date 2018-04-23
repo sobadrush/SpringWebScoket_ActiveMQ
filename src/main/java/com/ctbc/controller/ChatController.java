@@ -36,7 +36,7 @@ public class ChatController {
 		
 		STATUS = status;
 		
-		taskExecutor.execute(new Runnable() {
+		this.taskExecutor.execute(new Runnable() {
 			@Override
 			public void run() {
 				while (true) {
@@ -46,9 +46,12 @@ public class ChatController {
 					}
 					
 					System.out.println("Thread runing... " + sdf.format(new Date(System.currentTimeMillis())));
-					msgTemplate.convertAndSend("/topic/greetings", "廣播：：：你好!!!!!");
+					msgTemplate.convertAndSend("/QUEUE_fuck/greetings", "廣播(convertAndSend QUEUE_fuck)：：：你好!!!!!"); // 【發訊息到 queue 中】
+					msgTemplate.convertAndSend("/topicQQQ/greetingsQQ", "廣播(convertAndSend topicQQQ)：：：你好!!!!!");   // 【發訊息到 queue 中】※topicQQQ會變成Queue，因為topic似乎是關鍵字
+					msgTemplate.convertAndSend("/topic/greetingsGG", "廣播(convertAndSend topic)：：：你好!!!!!");         // 【發訊息到 topic 中】※topic似乎是關鍵字
+					
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(2500);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -58,7 +61,9 @@ public class ChatController {
 	}
 
 	@MessageMapping("/hello")
-	@SendTo("/topic/greetings")
+//	@SendTo("/QUEUE_fuck/greetings")    //  【發訊息到 queue 中】
+	@SendTo("/topic/greetingsGG")      //  【發訊息到 topic 中】※topic似乎是關鍵字
+//	@SendTo("/topicQQQ/greetingsGG")    //  【發訊息到 topicQQQ ，在ActiveMQ中似乎會變成Queue】※topic似乎是關鍵字
 	@ResponseBody
 	public String greeting(String messageIncoming) throws Exception {
 		System.out.println("========= 【 進入greeting() 】 =========");
