@@ -8,6 +8,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -40,5 +41,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		threadPoolExecutor.setMaxPoolSize(10);
 		threadPoolExecutor.setWaitForTasksToCompleteOnShutdown(false);
 		return threadPoolExecutor;
+	}
+	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("classpath:");
 	}
 }

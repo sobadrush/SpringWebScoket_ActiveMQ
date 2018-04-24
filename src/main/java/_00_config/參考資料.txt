@@ -13,3 +13,6 @@ https://blog.csdn.net/u013571243/article/details/44565289
 
 【Spring4.3.3 WebSocket-STOMP协议集成 (2)-WebSocket-stomp子协议通讯小栗子】
 https://blog.csdn.net/fly_leopard/article/details/53148935
+
+【spring websocket中 STOMP】Good!!!!!!!!!!!!!!!!!!!!!
+https://my.oschina.net/u/1590027/blog/879629
